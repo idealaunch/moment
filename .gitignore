@@ -6,3 +6,5 @@ min/tests.js
 sauce_connect.log
 .sauce-labs.creds
 npm-debug.log
+moment.iml
+.idea/

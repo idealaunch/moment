@@ -135,10 +135,10 @@
 
         // default relative time thresholds
         relativeTimeThresholds = {
-            s: 45,  // seconds to minute
-            m: 45,  // minutes to hour
-            h: 22,  // hours to day
-            d: 26,  // days to month
+            s: 55,  // seconds to minute
+            m: 55,  // minutes to hour
+            h: 48,  // hours to day
+            d: 28,  // days to month
             M: 11   // months to year
         },
 

@@ -54,6 +54,7 @@
             y : '\'n jaar',
             yy : '%d jaar'
         },
+        ordinalParse: /\d{1,2}(ste|de)/,
         ordinal : function (number) {
             return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de'); // Thanks to Joris Röling : https://github.com/jjupiter
         },
@@ -202,7 +203,7 @@
             yy : '%d سنوات'
         },
         preparse: function (string) {
-            return string.replace(/[۰-۹]/g, function (match) {
+            return string.replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
                 return numberMap[match];
             }).replace(/،/g, ',');
         },
@@ -332,7 +333,7 @@
             yy : pluralize('y')
         },
         preparse: function (string) {
-            return string.replace(/[۰-۹]/g, function (match) {
+            return string.replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
                 return numberMap[match];
             }).replace(/،/g, ',');
         },
@@ -433,6 +434,7 @@
                 return 'axşam';
             }
         },
+        ordinalParse: /\d{1,2}-(ıncı|inci|nci|üncü|ncı|uncu)/,
         ordinal : function (number) {
             if (number === 0) {  // special case for zero
                 return number + '-ıncı';
@@ -579,6 +581,7 @@
             }
         },
 
+        ordinalParse: /\d{1,2}-(і|ы|га)/,
         ordinal: function (number, period) {
             switch (period) {
             case 'M':
@@ -662,6 +665,7 @@
             y : 'година',
             yy : '%d години'
         },
+        ordinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
         ordinal : function (number) {
             var lastDigit = number % 10,
                 last2Digits = number % 100;
@@ -996,6 +1000,7 @@
             y : 'ur bloaz',
             yy : specialMutationForYears
         },
+        ordinalParse: /\d{1,2}(añ|vet)/,
         ordinal : function (number) {
             var output = (number === 1) ? 'añ' : 'vet';
             return number + output;
@@ -1138,6 +1143,7 @@
             y      : 'godinu',
             yy     : translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -1205,6 +1211,7 @@
             y : 'un any',
             yy : '%d anys'
         },
+        ordinalParse : /\d{1,2}º/,
         ordinal : '%dº',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -1361,6 +1368,7 @@
             y : translate,
             yy : translate
         },
+        ordinalParse : /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -1421,6 +1429,7 @@
             y : 'пĕр çул',
             yy : '%d çул'
         },
+        ordinalParse: /\d{1,2}-мĕш/,
         ordinal : '%d-мĕш',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -1479,6 +1488,7 @@
             y: 'blwyddyn',
             yy: '%d flynedd'
         },
+        ordinalParse: /\d{1,2}(fed|ain|af|il|ydd|ed|eg)/,
         // traditional ordinal numbers above 31 are not commonly used in colloquial Welsh
         ordinal: function (number) {
             var b = number,
@@ -1556,6 +1566,7 @@
             y : 'et år',
             yy : '%d år'
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -1629,6 +1640,7 @@
             y : processRelativeTime,
             yy : processRelativeTime
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -1701,6 +1713,7 @@
             y : processRelativeTime,
             yy : processRelativeTime
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -1794,9 +1807,8 @@
             y : 'ένας χρόνος',
             yy : '%d χρόνια'
         },
-        ordinal : function (number) {
-            return number + 'η';
-        },
+        ordinalParse: /\d{1,2}η/,
+        ordinal: '%dη',
         week : {
             dow : 1, // Monday is the first day of the week.
             doy : 4  // The week that contains Jan 4st is the first week of the year.
@@ -1852,6 +1864,7 @@
             y : 'a year',
             yy : '%d years'
         },
+        ordinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
             var b = number % 10,
                 output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -1916,6 +1929,7 @@
             y : 'a year',
             yy : '%d years'
         },
+        ordinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
             var b = number % 10,
                 output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -1976,6 +1990,7 @@
             y : 'a year',
             yy : '%d years'
         },
+        ordinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
             var b = number % 10,
                 output = (~~(number % 100 / 10) === 1) ? 'th' :
@@ -2049,6 +2064,7 @@
             y : 'jaro',
             yy : '%d jaroj'
         },
+        ordinalParse: /\d{1,2}a/,
         ordinal : '%da',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -2125,6 +2141,7 @@
             y : 'un año',
             yy : '%d años'
         },
+        ordinalParse : /\d{1,2}º/,
         ordinal : '%dº',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -2202,6 +2219,7 @@
             y      : processRelativeTime,
             yy     : processRelativeTime
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -2263,6 +2281,7 @@
             y : 'urte bat',
             yy : '%d urte'
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -2361,6 +2380,7 @@
                 return symbolMap[match];
             }).replace(/,/g, '،');
         },
+        ordinalParse: /\d{1,2}م/,
         ordinal : '%dم',
         week : {
             dow : 6, // Saturday is the first day of the week.
@@ -2467,6 +2487,7 @@
             y : translate,
             yy : translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -2524,6 +2545,7 @@
             y : 'eitt ár',
             yy : '%d ár'
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -2581,6 +2603,7 @@
             y : 'un an',
             yy : '%d ans'
         },
+        ordinalParse: /\d{1,2}(er|)/,
         ordinal : function (number) {
             return number + (number === 1 ? 'er' : '');
         }
@@ -2636,6 +2659,7 @@
             y : 'un an',
             yy : '%d ans'
         },
+        ordinalParse: /\d{1,2}(er|)/,
         ordinal : function (number) {
             return number + (number === 1 ? 'er' : '');
         },
@@ -2710,6 +2734,7 @@
             y : 'un ano',
             yy : '%d anos'
         },
+        ordinalParse : /\d{1,2}º/,
         ordinal : '%dº',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -3034,6 +3059,7 @@
             y      : 'godinu',
             yy     : translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -3140,6 +3166,7 @@
             y : translate,
             yy : translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -3239,6 +3266,7 @@
             }
         },
 
+        ordinalParse: /\d{1,2}|\d{1,2}-(ին|րդ)/,
         ordinal: function (number, period) {
             switch (period) {
             case 'DDD':
@@ -3446,6 +3474,7 @@
             y : translate,
             yy : translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -3506,6 +3535,7 @@
             y : 'un anno',
             yy : '%d anni'
         },
+        ordinalParse : /\d{1,2}º/,
         ordinal: '%dº',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -3659,6 +3689,7 @@
             y : 'წელი',
             yy : '%d წელი'
         },
+        ordinalParse: /0|1-ლი|მე-\d{1,2}|\d{1,2}-ე/,
         ordinal : function (number) {
             if (number === 0) {
                 return number;
@@ -3793,6 +3824,7 @@
             y : '일년',
             yy : '%d년'
         },
+        ordinalParse : /\d{1,2}일/,
         ordinal : '%d일',
         meridiemParse : /(오전|오후)/,
         isPM : function (token) {
@@ -3931,6 +3963,7 @@
             y : processRelativeTime,
             yy : '%d Joer'
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal: '%d.',
         week: {
             dow: 1, // Monday is the first day of the week.
@@ -4048,6 +4081,7 @@
             y : translateSingular,
             yy : translate
         },
+        ordinalParse: /\d{1,2}-oji/,
         ordinal : function (number) {
             return number + '-oji';
         },
@@ -4128,6 +4162,7 @@
             y : 'gadu',
             yy : relativeTimeWithPlural
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -4197,6 +4232,7 @@
             y : 'година',
             yy : '%d години'
         },
+        ordinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
         ordinal : function (number) {
             var lastDigit = number % 10,
                 last2Digits = number % 100;
@@ -4599,6 +4635,7 @@
             y : 'ett år',
             yy : '%d år'
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -4771,6 +4808,7 @@
             y : 'één jaar',
             yy : '%d jaar'
         },
+        ordinalParse: /\d{1,2}(ste|de)/,
         ordinal : function (number) {
             return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de');
         },
@@ -4830,6 +4868,7 @@
             y : 'eit år',
             yy : '%d år'
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -4929,6 +4968,7 @@
             y : 'rok',
             yy : translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -4990,6 +5030,7 @@
             y : 'um ano',
             yy : '%d anos'
         },
+        ordinalParse: /\d{1,2}º/,
         ordinal : '%dº'
     });
 }));
@@ -5047,6 +5088,7 @@
             y : 'um ano',
             yy : '%d anos'
         },
+        ordinalParse: /\d{1,2}º/,
         ordinal : '%dº',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -5272,6 +5314,7 @@
             }
         },
 
+        ordinalParse: /\d{1,2}-(й|го|я)/,
         ordinal: function (number, period) {
             switch (period) {
             case 'M':
@@ -5444,6 +5487,7 @@
             y : translate,
             yy : translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -5589,6 +5633,7 @@
             y      : 'eno leto',
             yy     : translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -5651,6 +5696,7 @@
             y : 'një vit',
             yy : '%d vite'
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -5757,6 +5803,7 @@
             y      : 'годину',
             yy     : translator.translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -5863,6 +5910,7 @@
             y      : 'godinu',
             yy     : translator.translate
         },
+        ordinalParse: /\d{1,2}\./,
         ordinal : '%d.',
         week : {
             dow : 1, // Monday is the first day of the week.
@@ -5920,6 +5968,7 @@
             y : 'ett år',
             yy : '%d år'
         },
+        ordinalParse: /\d{1,2}(e|a)/,
         ordinal : function (number) {
             var b = number % 10,
                 output = (~~(number % 100 / 10) === 1) ? 'e' :
@@ -6019,6 +6068,7 @@
                 return symbolMap[match];
             });
         },*/
+        ordinalParse: /\d{1,2}வது/,
         ordinal : function (number) {
             return number + 'வது';
         },
@@ -6156,6 +6206,7 @@
             y : 'isang taon',
             yy : '%d taon'
         },
+        ordinalParse: /\d{1,2}/,
         ordinal : function (number) {
             return number;
         },
@@ -6242,6 +6293,7 @@
             y : 'bir yıl',
             yy : '%d yıl'
         },
+        ordinalParse: /\d{1,2}'(inci|nci|üncü|ncı|uncu|ıncı)/,
         ordinal : function (number) {
             if (number === 0) {  // special case for zero
                 return number + '\'ıncı';
@@ -6507,6 +6559,7 @@
             }
         },
 
+        ordinalParse: /\d{1,2}-(й|го)/,
         ordinal: function (number, period) {
             switch (period) {
             case 'M':
@@ -6638,6 +6691,7 @@
             y : 'một năm',
             yy : '%d năm'
         },
+        ordinalParse: /\d{1,2}/,
         ordinal : function (number) {
             return number;
         },
@@ -6719,6 +6773,7 @@
             },
             sameElse : 'LL'
         },
+        ordinalParse: /\d{1,2}(日|月|周)/,
         ordinal : function (number, period) {
             switch (period) {
             case 'd':
@@ -6809,6 +6864,7 @@
             lastWeek : '[上]ddddLT',
             sameElse : 'L'
         },
+        ordinalParse: /\d{1,2}(日|月|週)/,
         ordinal : function (number, period) {
             switch (period) {
             case 'd' :
